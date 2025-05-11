@@ -1,5 +1,32 @@
 {
   "dependencies": {
-    "init": "^0.1.2"
-  }
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "init": "^0.1.2",
+    "mongoose": "^8.14.2",
+    "nodemon": "^3.1.10"
+  },
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "my project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nzilla01/CSE341.git"
+  },
+  "keywords": [
+    "okon",
+    "nsikak"
+  ],
+  "author": "Okon Nsikak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nzilla01/CSE341/issues"
+  },
+  "homepage": "https://github.com/nzilla01/CSE341#readme"
 }
