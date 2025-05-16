@@ -2,18 +2,16 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Contact API(CSE341)",
+    "description": "Contact API (CSE341)",
     "version": "1.0.0"
   },
   "host": "localhost:5000",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/docs-link": {
       "get": {
-        "description": "",
+        "description": "Get documentation link",
         "responses": {
           "200": {
             "description": "OK"
@@ -23,7 +21,7 @@
     },
     "/": {
       "get": {
-        "description": "",
+        "description": "Fetch all contacts",
         "responses": {
           "200": {
             "description": "OK"
@@ -34,7 +32,26 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new contact",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "contact",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "email": { "type": "string" },
+                "favoriteColor": { "type": "string" },
+                "birthday": { "type": "string", "format": "date" }
+              },
+              "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -47,7 +64,7 @@
     },
     "/{id}": {
       "get": {
-        "description": "",
+        "description": "Fetch a contact by ID",
         "parameters": [
           {
             "name": "id",
@@ -69,7 +86,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a contact by ID",
         "parameters": [
           {
             "name": "id",
@@ -91,13 +108,29 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a contact by ID",
+        "consumes": ["application/json"],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "contact",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "email": { "type": "string" },
+                "favoriteColor": { "type": "string" },
+                "birthday": { "type": "string", "format": "date" }
+              }
+            }
           }
         ],
         "responses": {
@@ -115,3 +148,4 @@
     }
   }
 }
+

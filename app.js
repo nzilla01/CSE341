@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
+
 // ✅ Swagger UI MUST be declared BEFORE other routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
