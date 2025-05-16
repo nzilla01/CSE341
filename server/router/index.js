@@ -3,7 +3,7 @@ const router = express.Router();
 const Contact = require('../scheme/contact');
 
 
-router.use('/doc-link', (docData = (req, res) => {
+router.get('/doc-link', (docData = (req, res) => {
   let docData = {
   documentationURL: 'https://cse341-dsna.onrender.com',
 };
