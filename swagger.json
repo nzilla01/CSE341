@@ -45,10 +45,11 @@
                 "firstName": { "type": "string" },
                 "lastName": { "type": "string" },
                 "email": { "type": "string" },
-                "favoriteColor": { "type": "string" },
-                "birthday": { "type": "string", "format": "date" }
+                "favouriteColor": { "type": "string" },
+                "birthday": { "type": "string", "format": "date" },
+                "contact":{"type":"string"}
               },
-              "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"]
+              "required": ["firstName", "lastName", "email", "favoriteColor", "birthday", "contact"]
             }
           }
         ],
@@ -128,7 +129,8 @@
                 "lastName": { "type": "string" },
                 "email": { "type": "string" },
                 "favoriteColor": { "type": "string" },
-                "birthday": { "type": "string", "format": "date" }
+                "birthday": { "type": "string", "format": "date" },
+                "contact":{"type":"string"}
               }
             }
           }
