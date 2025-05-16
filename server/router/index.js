@@ -28,9 +28,9 @@ router.get('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
   try{
     const contact = await Contact.findById(req.params.id);
-    if(!contact){
-      return res.status(404).send('Contact not found');
-    }
+    // if(!contact){
+    //   return res.status(404).send('Contact not found');
+    // }
     console.log('Contact fetched:', contact)
     res.send(contact);
   }catch(err){
