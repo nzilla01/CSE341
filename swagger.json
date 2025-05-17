@@ -19,18 +19,34 @@
         }
       }
     },
-    "/": {
-      "get": {
-        "description": "Fetch all contacts",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
+   "/": {
+  "get": {
+    "description": "Fetch all contacts",
+    "produces": ["application/json"],
+    "responses": {
+      "200": {
+        "description": "List of all contacts",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" },
+              "email": { "type": "string" },
+              "favoriteColor": { "type": "string" },
+              "birthday": { "type": "string", "format": "date" },
+              "contact": { "type": "string" },
+              "_id": { "type": "string" }
+            }
           }
         }
       },
+      "500": {
+        "description": "Internal Server Error"
+      }
+    }
+  },
       "post": {
         "description": "Create a new contact",
         "consumes": ["application/json"],
