@@ -1,71 +1,72 @@
-const contact = require("../scheme/contact");
+const Contact = require("../scheme/contact");
 
 const getAllContacts = async (req, res) => {
-    try{
-        const contacts = await contact.find();
+    try {
+        const contacts = await Contact.find();
         console.log("Contacts fetched:", contacts);
         res.send(contacts);
-    }catch(err){
+    } catch (err) {
         console.log(err);
         res.status(500).send("Error loading contacts");
     }
-}
+};
+
 const getContactById = async (req, res) => {
-    try{
-        const contact = await contact.findById(req.params.id);
-        if(!contact){
+    try {
+        const foundContact = await Contact.findById(req.params.id);
+        if (!foundContact) {
             return res.status(404).send("Contact not found");
         }
-        console.log("Contact fetched:", contact);
-        res.send(contact);
-    }catch(err){
+        console.log("Contact fetched:", foundContact);
+        res.send(foundContact);
+    } catch (err) {
         console.log(err);
         res.status(500).send("Error loading contact");
     }
-}
+};
+
 const createContact = async (req, res) => {
-    try{
-        const contact = new contact(req.body);
-        await contact.save();
-        console.log("Contact saved:", contact);
-        res.status(201).send(contact);
-    }catch(err){
+    try {
+        const newContact = new Contact(req.body);
+        await newContact.save();
+        console.log("Contact saved:", newContact);
+        res.status(201).send(newContact);
+    } catch (err) {
         console.log(err);
         res.status(500).send("Error saving contact");
     }
-}
+};
+
 const updateContact = async (req, res) => {
-    try{
-        const contact = await contact.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if(!contact){
+    try {
+        const updatedContact = await Contact.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedContact) {
             return res.status(404).send("Contact not found");
         }
-        console.log("Contact updated:", contact);
-        res.send(contact);
-    }
-    catch(err){
+        console.log("Contact updated:", updatedContact);
+        res.send(updatedContact);
+    } catch (err) {
         console.log(err);
         res.status(500).send("Error updating contact");
     }
-}
+};
 
 const deleteContact = async (req, res) => {
-    try{
-        const contact = await contact.findByIdAndDelete(req.params.id);
-        if(!contact){
+    try {
+        const deletedContact = await Contact.findByIdAndDelete(req.params.id);
+        if (!deletedContact) {
             return res.status(404).send("Contact not found");
         }
-        console.log("Contact deleted:", contact);
-        res.send(contact);
-    }catch(err){
+        console.log("Contact deleted:", deletedContact);
+        res.send(deletedContact);
+    } catch (err) {
         console.log(err);
         res.status(500).send("Error deleting contact");
     }
-}   
-
+};
 
 exports.getAllContacts = getAllContacts;
 exports.getContactById = getContactById;
-exports.createContact = createContact;  
+exports.createContact = createContact;
 exports.updateContact = updateContact;
 exports.deleteContact = deleteContact;
